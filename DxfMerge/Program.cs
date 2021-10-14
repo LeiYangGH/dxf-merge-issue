@@ -40,14 +40,16 @@ namespace DxfMerge
             Block block = new Block(Hash(dxfFile));
             foreach (Layout layout in doc.Layouts)
             {
-                block.Entities.AddRange(doc.Layouts.GetReferences(layout).OfType<EntityObject>().Select(x => x.Clone() as EntityObject));
+                block.Entities.AddRange(doc.Layouts.GetReferences(layout)
+                    .OfType<EntityObject>().Select(x => x.Clone() as EntityObject));
             }
             return block;
         }
         static void Main(string[] args)
         {
-            //string[] inputs = new string[] { "../../../1.dxf", "../../../2.dxf" };
-            string[] inputs = new string[] { "../../../2.dxf", "../../../1.dxf" }; //merge order matters
+            string[] inputs = new string[] { "../../../1.dxf", "../../../2.dxf" };
+            //merge order matters
+            //string[] inputs = new string[] { "../../../2.dxf", "../../../1.dxf" }; 
             double y = 0;
             DxfDocument doc = new DxfDocument(netDxf.Header.DxfVersion.AutoCad2018);
             foreach (string input in inputs)
