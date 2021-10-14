@@ -46,7 +46,8 @@ namespace DxfMerge
         }
         static void Main(string[] args)
         {
-            string[] inputs = new string[] { "../../../1.dxf", "../../../2.dxf" };
+            //string[] inputs = new string[] { "../../../1.dxf", "../../../2.dxf" };
+            string[] inputs = new string[] { "../../../2.dxf", "../../../1.dxf" }; //merge order matters
             double y = 0;
             DxfDocument doc = new DxfDocument(netDxf.Header.DxfVersion.AutoCad2018);
             foreach (string input in inputs)
